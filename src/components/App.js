@@ -148,6 +148,7 @@ export default function App() {
         auth.register(data).then(() => {
           setTooltipStatus('success');
           handleInfoTooltip();
+          history.push('/sign-in');
     })
     .catch((err) => {
       setTooltipStatus('fail');
@@ -159,6 +160,7 @@ export default function App() {
   /* Login */
   function handleLogin(data) {
       auth.signing(data).then((res) => {
+        setEmail(data.email);
         setLoggedIn(true);
         localStorage.setItem('jwt', res.token);
         history.push('/');
